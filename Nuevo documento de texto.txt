@@ -1,8 +1,0 @@
-public List<Empleado> findEmpleadoByPersona(String cedulaEmp) {
-		String JPQL = "SELECT o FROM Empleado o WHERE o.persona.cedulaEmp='" + cedulaEmp + "'";
-		Query q;
-		List<Empleado> lista;
-		q = em.createQuery(JPQL);
-		lista = q.getResultList();
-		return lista;
-	}
