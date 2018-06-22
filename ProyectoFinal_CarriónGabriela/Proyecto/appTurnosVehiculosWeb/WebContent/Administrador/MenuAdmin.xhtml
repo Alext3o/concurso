@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+	<f:event listener="#{controllerPersonal.actionComprobarLogin()}"
+		type="preRenderView"></f:event>
+</f:metadata>
+
+<h:head></h:head>
+<body>
+	<h:form>
+		<div align="right">
+			<p:commandButton action="#{controllerPersonal.actionSalir()}"
+				icon="ui-icon-close" value="Cerrar sesión"></p:commandButton>
+		</div>
+	</h:form>
+
+	<h:form>
+		<p:growl autoUpdate="true" />
+
+		<p:panelMenu style="width:300px">
+			<p:submenu label="PERSONAL">
+				<p:menuitem value="Nuevo personal" action="AdministrarPersonal"
+					icon="fa fa-user-plus" />
+				<p:menuitem value="Reporte personal" action="ReportePersonal"
+					icon="fa fa-list-alt" />
+			</p:submenu>
+
+			<p:separator />
+
+			<p:submenu label="VEHÍCULOS">
+				<p:menuitem value="Registro Vehículos Nuevos" action="Vehiculos"
+					icon="fa fa-automobile" />
+				<p:menuitem value="Reporte vehículos" action="ReporteVehiculos"
+					icon="fa fa-list-alt" />
+			</p:submenu>
+
+
+		
+
+		</p:panelMenu>
+	</h:form>
+</body>
+</html>

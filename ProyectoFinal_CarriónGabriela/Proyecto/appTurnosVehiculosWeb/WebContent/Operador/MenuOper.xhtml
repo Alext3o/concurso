@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+	<f:event listener="#{controllerPersonal.actionComprobarLogin()}"
+		type="preRenderView"></f:event>
+</f:metadata>
+<h:head></h:head>
+<body>
+
+	<h:form>
+		<div align="right">
+			<p:commandButton action="#{controllerPersonal.actionSalir()}"
+				icon="ui-icon-close" value="Cerrar sesión"></p:commandButton>
+		</div>
+	</h:form>
+
+
+	<h:form>
+		<p:growl autoUpdate="true" />
+
+		<p:panelMenu style="width:300px">
+			<p:submenu label="REQUISITOS">
+				<p:menuitem value="Nuevo requisito" action="Requisitos"
+					icon="fa fa-user-plus" />
+				<p:menuitem value="Reporte requisitos" action="ReporteRequisitos"
+					icon="fa fa-list-alt" />
+			</p:submenu>
+
+			<p:separator />
+
+			<p:submenu label="TURNOS">
+				<p:menuitem value="Reporte de turnos generados"
+					action="ReporteTurnos" icon="fa fa-automobile" />
+			</p:submenu>
+
+
+			<p:separator />
+
+			<p:submenu label="REVISIONES">
+				<p:menuitem value="Revisiones" action="Asignaciones"
+					icon="fa fa-automobile" />
+
+			</p:submenu>
+		</p:panelMenu>
+	</h:form>
+
+
+</body>
+</html>

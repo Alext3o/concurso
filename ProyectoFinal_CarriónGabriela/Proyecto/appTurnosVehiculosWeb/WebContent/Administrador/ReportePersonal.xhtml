@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+	<f:event listener="#{controllerPersonal.actionComprobarLogin()}"
+		type="preRenderView"></f:event>
+</f:metadata>
+
+<h:head></h:head>
+<body>
+
+	<p:growl autoUpdate="true"></p:growl>
+	<h:form id="form2">
+		<p:dataTable value="#{controllerPersonal.lista}" var="u" id="tabla1">
+			<p:column headerText="Cedula">
+				<h:outputText value="#{u.cedulaPer}" />
+			</p:column>
+			<p:column headerText="Nombres">
+				<h:outputText value="#{u.nombresPer}" />
+			</p:column>
+			<p:column headerText="Apellidos">
+				<h:outputText value="#{u.apellidosPer}" />
+			</p:column>
+			<p:column headerText="Direccion">
+				<h:outputText value="#{u.direccionPer}" />
+			</p:column>
+			<p:column headerText="Telefono">
+				<h:outputText value="#{u.telefonoPer}" />
+			</p:column>
+			<p:column headerText="Correo">
+				<h:outputText value="#{u.correoPer}" />
+			</p:column>
+			<p:column headerText="Rol">
+				<h:outputText value="#{u.rol}" />
+			</p:column>
+			<p:column headerText="Contraseña:">
+				<h:outputText value="#{u.contrasenia}" />
+			</p:column>
+			<p:column headerText="Eliminar">
+				<p:commandButton icon="ui-icon-trash" update="@form"
+					actionListener="#{controllerPersonal.actionListenerEliminar(u.cedulaPer)}"></p:commandButton>
+			</p:column>
+			<p:column headerText="Editar">
+				<p:commandButton icon="ui-icon-pencil" update="form3"
+					onclick="PF('dialogo1').show();"
+					actionListener="#{controllerPersonal.actionListenerCargar(u)}"></p:commandButton>
+			</p:column>
+
+		</p:dataTable>
+
+		<p:commandButton value="Reporte" ajax="false"
+			icon="fa fa-fw fa-file-pdf-o"
+			action="#{controllerPersonal.actionReportePersonal()}">
+		</p:commandButton>
+
+
+		<p:commandButton action="MenuAdmin" value="REGRESAR"
+			icon="ui-icon-close"></p:commandButton>
+
+
+	</h:form>
+
+
+
+
+
+	<p:dialog header="EDITAR USUARIO" widgetVar="dialogo1" id="dialogo1"
+		modal="true">
+		<h:form id="form3">
+			<p:messages autoUpdate="true"></p:messages>
+			<p:panelGrid columns="2">
+				<h:outputText value="cedula" />
+				<h:outputText value="#{controllerPersonal.cedula_per}"
+					required="true"
+					requiredMessage="Debe ingresar la cedula de usuario."
+					maxlength="10"></h:outputText>
+				<h:outputText value="nombres:" />
+				<p:inputText value="#{controllerPersonal.nombres_per}"
+					required="true"
+					requiredMessage="Debe ingresar los nombres de usuario."
+					maxlength="40"></p:inputText>
+				<h:outputText value="apellidos:" />
+				<p:inputText value="#{controllerPersonal.apellidos_per}"
+					required="true"
+					requiredMessage="Debe ingresar los apellidos de usuario."
+					maxlength="40"></p:inputText>
+				<h:outputText value="direccion:" />
+				<p:inputText value="#{controllerPersonal.direccion_per}"
+					required="true"
+					requiredMessage="Debe ingresar la direccion de usuario."
+					maxlength="40"></p:inputText>
+				<h:outputText value="telefono:" />
+				<p:inputText value="#{controllerPersonal.telefono_per}"
+					required="true"
+					requiredMessage="Debe ingresar el telefono de usuario."
+					maxlength="15"></p:inputText>
+				<h:outputText value="correo:" />
+				<p:inputText value="#{controllerPersonal.correo_per}"
+					required="true"
+					requiredMessage="Debe ingresar el correo de usuario."
+					maxlength="40"></p:inputText>
+				<h:outputText value="rol:" />
+				<p:inputText required="true" requiredMessage="Debe ingresar un rol"></p:inputText>
+				<h:outputText value="Contraseña:" />
+				<p:password value="#{controllerPersonal.contrasenia}"
+					required="true" requiredMessage="Ingrese una contraseña"
+					maxlength="10" size="10"></p:password>
+
+				<p:commandButton value="ACTUALIZAR" icon="ui-icon-disk"
+					update="@form,:form2:tabla1"
+					action="#{controllerPersonal.actionListenerActualizarUsuario()}"></p:commandButton>
+
+			</p:panelGrid>
+		</h:form>
+	</p:dialog>
+</body>
+</html>

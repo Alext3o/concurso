@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<div align="right">
+		<h:form>
+			<p:commandButton action="index" icon="ui-icon-close"></p:commandButton>
+		</h:form>
+	</div>
+	<p:growl autoUpdate="true"></p:growl>
+	<div align="center">
+		<p:panel header="LOGIN" style="width:500px">
+			<h:form id="form">
+				<p:panelGrid columns="2">
+					<h:outputText value="USUARIO:" />
+					<p:inputText value="#{controllerPersonal.cedula_login}"
+						required="true"
+						requiredMessage="Debe ingresar la cedula de usuario." />
+					<h:outputText value="CLAVE:" />
+					<p:password value="#{controllerPersonal.contrasenia}"
+						required="true"
+						requiredMessage="Debe ingresar la contrasenia correcta.">
+					</p:password>
+
+					<p:commandButton action="#{controllerPersonal.actionLogin()}"
+						value="INGRESAR" icon="ui-icon-disk"></p:commandButton>
+				</p:panelGrid>
+			</h:form>
+
+
+
+		</p:panel>
+	</div>
+
+
+
+</body>
+</html>
