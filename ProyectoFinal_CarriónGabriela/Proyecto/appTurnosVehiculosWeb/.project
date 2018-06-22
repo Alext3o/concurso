@@ -3,6 +3,8 @@
 	<name>appTurnosVehiculosWeb</name>
 	<comment></comment>
 	<projects>
+		<project>appTurnosVehiculos</project>
+		<project>appTurnosVehiculosEJB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
